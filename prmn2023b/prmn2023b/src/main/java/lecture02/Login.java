@@ -4,8 +4,8 @@ public class Login {
     String name;
     int num;
     Login(String name,int num){
-        name = "千歳花子";
-        num = 2110000;
+        this.name = name;
+        this.num = num;
     }
 
     void message(String name_n,int num_n){
