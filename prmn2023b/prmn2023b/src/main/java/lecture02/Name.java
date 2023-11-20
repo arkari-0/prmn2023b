@@ -2,7 +2,7 @@ package lecture02;
 import java.util.Scanner;
 public class Name {
     Scanner input = new Scanner(System.in);
-    int search(String[][] a) {
+    public int search(String[][] a) {
         String bangou = input.next();
         for (int i = 0; i < 5; i++) {
             if (bangou.equals(a[i][0])) {
@@ -14,7 +14,7 @@ public class Name {
         return 0;
     }
 
-    void access(String[][] b,int x){
+    public void access(String[][] b,int x){
         System.out.print("パスワードを入力してください：");
         String pass = input.next();
         if(pass.equals(b[x][1])) {
