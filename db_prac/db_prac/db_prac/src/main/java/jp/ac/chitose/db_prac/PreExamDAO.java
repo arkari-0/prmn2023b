@@ -7,7 +7,7 @@ import java.util.List;
 public class PreExamDAO {
     private static final String URL ="jdbc:h2:~/h2db/db_prac;Mode=PostgreSQL;AUTO_SERVER=TRUE";
     private static final String USER_NAME = "b2222250";
-    private static final String USER_PASS = "";
+    private static final String USER_PASS = "b2222250";
     public List<PreExam> selectPreExams(int lessThan) throws SQLException{
         List<PreExam> returning = new ArrayList<>();
         String SQL = "select * from 学籍情報 where 得点 < ?";
@@ -39,4 +39,17 @@ public class PreExamDAO {
         return n;
     }
 
+    public int insertPreExam(String gakusekiCode, String familyName, String firstName, int point) throws SQLException{
+        String sql ="insert into 学籍情報 values(?,?,?,?)";
+        int n = 0;
+        try(Connection conn = DriverManager.getConnection(URL,USER_NAME,USER_PASS);
+        PreparedStatement stmt = conn.prepareStatement(sql)){
+        stmt.setString(1,gakusekiCode);
+        stmt.setString(2,familyName);
+        stmt.setString(3,firstName);
+        stmt.setInt(4,point);
+        n = stmt.executeUpdate();
+        }
+        return n;
+    }
 }
